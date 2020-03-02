@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView signUpPhone;
     private SignInButton googleLoginButton;
     private GoogleSignInClient mGoogleSignInClient;
-    private String TAG = "mainActivity";
     private FirebaseAuth mAuth;
 
 
