@@ -41,6 +41,7 @@ public class SignUp extends MainActivity {
                     nextPage.setEnabled(true);
                 }
                 nomorHpPindah = "+62"+nomorHp;
+
             }
 
             @Override
