@@ -2,8 +2,11 @@ package com.example.testing;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,7 +27,9 @@ public class VerifyNumber extends SignUp {
 
     String verficationCode;
     Button verifyButton;
+    TextView verificationTextField;
     FirebaseAuth mAuth;
+    String manualVerify;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,7 @@ public class VerifyNumber extends SignUp {
 
         verifyButton = findViewById(R.id.verify_button);
         mAuth = FirebaseAuth.getInstance();
+        verificationTextField = findViewById(R.id.verify_code_text_field);
 
 
         String noHp = getIntent().getStringExtra("noHp");
@@ -40,11 +46,31 @@ public class VerifyNumber extends SignUp {
         sendCode(noHp);
 
 
+        verificationTextField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String verCode = verificationTextField.getText().toString().trim();
+                ToastMaker("onTextChanged");
+                if(verCode.length() == 6){
+                    verifyButton.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         verifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(VerifyNumber.this,LandingPage.class));
-                ToastMaker("Clicked");
+                ToastMaker(manualVerify);
+                verifyCode(manualVerify);
             }
         });
     }
@@ -61,12 +87,14 @@ public class VerifyNumber extends SignUp {
                     public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                         super.onCodeSent(s, forceResendingToken);
                         verficationCode = s;
+
                         ToastMaker("onCodeSent");
                     }
 
                     @Override
                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                         String code = phoneAuthCredential.getSmsCode();
+                        manualVerify = code;
                         ToastMaker("onVerificationCompleted");
                         if(code!=null){
                             verifyCode(code);
@@ -85,7 +113,6 @@ public class VerifyNumber extends SignUp {
     private void verifyCode(String code){
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verficationCode, code);
         signInWithCredential(credential);
-        ToastMaker("verifyCode");
     }
 
     private void signInWithCredential(PhoneAuthCredential credential){
@@ -94,7 +121,7 @@ public class VerifyNumber extends SignUp {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Intent intentLandingPage = new Intent(VerifyNumber.this,LandingPage.class);
-                    //intentLandingPage.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intentLandingPage.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     ToastMaker("signIn");
                     startActivity(intentLandingPage);
                 }
