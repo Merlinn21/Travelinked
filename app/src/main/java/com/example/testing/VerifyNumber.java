@@ -59,7 +59,6 @@ public class VerifyNumber extends SignUp {
                 if(verCode.length() == 6){
                     verifyButton.setEnabled(true);
                 }
-                ToastMaker("test");
             }
 
             @Override
@@ -71,8 +70,9 @@ public class VerifyNumber extends SignUp {
         verifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastMaker(manualVerify);
-                verifyCode(manualVerify);
+                String code = verificationTextField.getText().toString().trim();
+
+                verifyCode(code);
             }
         });
     }
