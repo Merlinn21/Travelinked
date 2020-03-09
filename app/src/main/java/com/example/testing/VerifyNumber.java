@@ -71,7 +71,6 @@ public class VerifyNumber extends SignUp {
             @Override
             public void onClick(View v) {
                 String code = verificationTextField.getText().toString().trim();
-
                 verifyCode(code);
             }
         });
@@ -125,7 +124,7 @@ public class VerifyNumber extends SignUp {
                 if(task.isSuccessful()){
                     Intent intentLandingPage = new Intent(VerifyNumber.this,LandingPage.class);
                     intentLandingPage.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    ToastMaker("signIn");
+                    ToastMaker("signn");
                     startActivity(intentLandingPage);
                 }
             }
