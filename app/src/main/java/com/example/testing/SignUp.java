@@ -21,11 +21,10 @@ public class SignUp extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sign_up_page_layout);
+        setContentView(R.layout.activity_signup);
 
-        backToStart = findViewById(R.id.back_To_Start);
-        noHp = findViewById(R.id.no_hp);
-        nextPage = findViewById(R.id.next_Page);
+        noHp = findViewById(R.id.Phone_Number);
+        nextPage = findViewById(R.id.Sign_Up);
 
         noHp.addTextChangedListener(new TextWatcher() {
             @Override
@@ -58,13 +57,6 @@ public class SignUp extends MainActivity {
                 nextPageIntent.putExtra("noHp",nomorHpPindah);
 
                 startActivity(nextPageIntent);
-            }
-        });
-
-        backToStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SignUp.this,MainActivity.class));
             }
         });
 

@@ -34,11 +34,11 @@ public class VerifyNumber extends SignUp {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.verify_number);
+        setContentView(R.layout.activity_verify);
 
-        verifyButton = findViewById(R.id.verify_button);
+        verifyButton = findViewById(R.id.Continue_Landing_Page);
         mAuth = FirebaseAuth.getInstance();
-        verificationTextField = findViewById(R.id.verify_code_text_field);
+        verificationTextField = findViewById(R.id.Input_Verification_Number);
 
 
         String noHp = getIntent().getStringExtra("noHp");

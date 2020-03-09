@@ -38,7 +38,7 @@
         android:id="@+id/First_Name"
         android:layout_width="271dp"
         android:layout_height="40dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/button"
         android:ems="10"
         android:hint="                     First Name"
@@ -47,9 +47,7 @@
         android:textColor="@color/gray"
         app:layout_constraintBottom_toTopOf="@+id/Last_Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/Last_Name"
@@ -62,12 +60,12 @@
         android:inputType="textPersonName"
         android:text=""
         android:textColor="@color/gray"
-        app:layout_constraintBottom_toTopOf="@+id/Email"
+        app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/Password"
+        android:id="@+id/password"
         android:layout_width="271dp"
         android:layout_height="40dp"
         android:layout_marginBottom="12dp"
@@ -82,7 +80,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/Email"
+        android:id="@+id/email"
         android:layout_width="271dp"
         android:layout_height="40dp"
         android:layout_marginBottom="12dp"
@@ -91,7 +89,7 @@
         android:hint="                         Email"
         android:inputType="textPersonName"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/Password"
+        app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
