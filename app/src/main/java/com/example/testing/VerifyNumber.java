@@ -77,6 +77,7 @@ public class VerifyNumber extends SignUp {
         });
     }
 
+
     private void sendCode(String number){
         ToastMaker("sendCode");
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
