@@ -113,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+
     /*private void UpdateUI(FirebaseUser usr){
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
 
