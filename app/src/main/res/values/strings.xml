@@ -8,4 +8,12 @@
     <string name="register">REGISTER</string>
     <string name="email">Email:</string>
     <string name="password1">Password:</string>
+    <string name="search">Search</string>
+    <string name="pack_your_bag">Pack Your Bag!</string>
+    <string name="top_destination">Top Destination</string>
+    <string name="todo">TODO</string>
+    <string name="bali_indonesia">Bali, Indonesia</string>
+    <string name="todo">TODO</string>
+    <string name="todo">TODO</string>
+    <string name="yogyakarta_indonesia">Yogyakarta, Indonesia</string>
 </resources>
