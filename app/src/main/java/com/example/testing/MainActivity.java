@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -26,7 +28,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class MainActivity extends AppCompatActivity {
 
     private TextView signUpPhone;
-    private SignInButton googleLoginButton;
+    private Button googleLoginButton;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
 
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        signUpPhone = findViewById(R.id.sign_up_phone);
+        signUpPhone = findViewById(R.id.Sign_Up_Menu);
         googleLoginButton = findViewById(R.id.sign_in_button_google);
 
         mAuth = FirebaseAuth.getInstance();
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 signIn();
             }
         });
+
         signUpPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,16 +67,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        Toast.makeText(this,signUpPhone.getText(),Toast.LENGTH_SHORT).show();
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
 
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.sign_in_button_google:
-                signIn();
-                break;
-        }
-    }
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -113,14 +110,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /*private void UpdateUI(FirebaseUser usr){
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-
-        if(account != null){
-            String personName = account.getDisplayName();
-            Toast.makeText(MainActivity.this, personName, Toast.LENGTH_SHORT).show();
-        }
-    }*/
 }
 
 //references

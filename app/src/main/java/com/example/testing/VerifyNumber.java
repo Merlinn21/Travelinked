@@ -34,11 +34,11 @@ public class VerifyNumber extends SignUp {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.verify_number);
+        setContentView(R.layout.activity_verify);
 
-        verifyButton = findViewById(R.id.verify_button);
+        verifyButton = findViewById(R.id.Continue_Landing_Page);
         mAuth = FirebaseAuth.getInstance();
-        verificationTextField = findViewById(R.id.verify_code_text_field);
+        verificationTextField = findViewById(R.id.Input_Verification_Number);
 
 
         String noHp = getIntent().getStringExtra("noHp");
@@ -66,14 +66,16 @@ public class VerifyNumber extends SignUp {
 
             }
         });
+
         verifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastMaker(manualVerify);
-                verifyCode(manualVerify);
+                String code = verificationTextField.getText().toString().trim();
+                verifyCode(code);
             }
         });
     }
+
 
     private void sendCode(String number){
         ToastMaker("sendCode");
@@ -122,7 +124,7 @@ public class VerifyNumber extends SignUp {
                 if(task.isSuccessful()){
                     Intent intentLandingPage = new Intent(VerifyNumber.this,LandingPage.class);
                     intentLandingPage.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    ToastMaker("signIn");
+                    ToastMaker("signn");
                     startActivity(intentLandingPage);
                 }
             }
