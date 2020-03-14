@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="@drawable/background"
-    >
+    tools:context=".MainActivity">
 
 
     <TextView
@@ -80,8 +79,10 @@
         android:layout_marginTop="244dp"
         android:background="@drawable/button"
         android:ems="10"
-        android:hint="                         Email"
+        android:gravity="center_horizontal"
+        android:hint="Email"
         android:inputType="textEmailAddress"
+        android:textAlignment="center"
         android:textColor="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,8 +97,10 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/button"
         android:ems="10"
-        android:hint="                     Password"
+        android:gravity="center_horizontal"
+        android:hint="Password"
         android:inputType="textPassword"
+        android:textAlignment="center"
         android:textColor="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
