@@ -30,6 +30,7 @@ public class VerifyNumber extends SignUp {
     TextView verificationTextField;
     FirebaseAuth mAuth;
     String manualVerify;
+    TextView resendCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class VerifyNumber extends SignUp {
         verifyButton = findViewById(R.id.Continue_Landing_Page);
         mAuth = FirebaseAuth.getInstance();
         verificationTextField = findViewById(R.id.Input_Verification_Number);
-
+        resendCode = findViewById(R.id.Resend_Code);
 
         String noHp = getIntent().getStringExtra("noHp");
         ToastMaker(noHp);
@@ -72,6 +73,13 @@ public class VerifyNumber extends SignUp {
             public void onClick(View v) {
                 String code = verificationTextField.getText().toString().trim();
                 verifyCode(code);
+            }
+        });
+
+        resendCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendCode(manualVerify);
             }
         });
     }

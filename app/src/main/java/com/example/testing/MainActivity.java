@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private Button googleLoginButton;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
+    private Button loginBtn;
+    private TextView email;
+    private TextView password;
 
 
     @Override
@@ -40,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
         signUpPhone = findViewById(R.id.Sign_Up_Menu);
         googleLoginButton = findViewById(R.id.sign_in_button_google);
+        loginBtn = findViewById(R.id.login_button);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
 
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions gsc = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -60,6 +66,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,SignUp.class));
+            }
+        });
+
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(email.toString().trim().equals("") || password.toString().trim().equals("")){
+                    Toast.makeText(MainActivity.this, "Please fill all the", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
             }
         });
     }
