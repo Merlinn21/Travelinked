@@ -148,8 +148,8 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="200"
-        android:layout_height="200"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         app:srcCompat="@drawable/bintanglima"
         tools:layout_editor_absoluteX="177dp"
         tools:layout_editor_absoluteY="71dp" />

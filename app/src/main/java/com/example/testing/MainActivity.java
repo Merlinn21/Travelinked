@@ -85,8 +85,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        Toast.makeText(this,signUpPhone.getText(),Toast.LENGTH_SHORT).show();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser!= null){
+            Intent nextPageIntent = new Intent(MainActivity.this,LandingPage.class);
+            startActivity(nextPageIntent);
+        }
     }
 
 

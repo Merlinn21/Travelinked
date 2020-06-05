@@ -22,6 +22,7 @@ public class SignUp extends MainActivity {
     TextView password;
     Button nextPage;
     String nomorHpPindah;
+    ImageView prevPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,9 @@ public class SignUp extends MainActivity {
         password = findViewById(R.id.password);
         noHp = findViewById(R.id.Phone_Number);
 
+
         nextPage = findViewById(R.id.Sign_Up);
+        prevPage = findViewById(R.id.back_arrow);
 
         noHp.addTextChangedListener(new TextWatcher() {
             @Override
@@ -63,18 +66,25 @@ public class SignUp extends MainActivity {
         nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(firstName.toString().trim().equals("") || lastName.toString().trim().equals("") ||
-                    noHp.toString().trim().equals("") || password.toString().trim().equals("") || email.toString().trim().equals("")){
-                    Toast.makeText(SignUp.this, "Please fill all the ...", Toast.LENGTH_SHORT).show();
+                if(firstName.toString().matches("") || lastName.toString().matches("") ||
+                    noHp.toString().matches("") || password.toString().matches("")|| email.toString().matches("")){
+                    Toast.makeText(SignUp.this, "Please fill all the field", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Intent nextPageIntent = new Intent(SignUp.this,VerifyNumber.class);
                 nextPageIntent.putExtra("noHp",nomorHpPindah);
 
-                startActivity(nextPageIntent);
+                //startActivity(nextPageIntent);
             }
         });
 
+        prevPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent prevPageIntent = new Intent(SignUp.this,MainActivity.class);
+                startActivity(prevPageIntent);
+            }
+        });
 
     }
 }

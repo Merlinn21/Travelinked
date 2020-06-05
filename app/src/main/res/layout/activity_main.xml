@@ -4,11 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="447dp"
+        android:layout_height="453dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/travellinked" />
 
     <TextView
         android:id="@+id/textView"
@@ -19,7 +28,7 @@
         android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif-condensed-light"
         android:text="Don't have an account?"
-        android:textColor="@color/gray"
+        android:textColor="#363C3E"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,17 +41,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
         android:fontFamily="sans-serif-light"
-        android:text="Sign UP"
-        android:textColor="#DF4A32"
+        android:text="Sign Up"
+        android:textColor="#FFFFFF"
         android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
+        app:layout_constraintStart_toEndOf="@+id/textView" />
 
     <Button
         android:id="@+id/login_button"
@@ -51,7 +60,7 @@
         android:background="@drawable/button"
         android:text="Login"
         android:textAllCaps="false"
-        android:textColor="@color/blue"
+        android:textColor="#363C3E"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,13 +86,16 @@
         android:layout_width="271dp"
         android:layout_height="40dp"
         android:layout_marginTop="244dp"
-        android:background="@drawable/button"
+        android:background="#FFFFFF"
         android:ems="10"
         android:gravity="center_horizontal"
         android:hint="Email"
         android:inputType="textEmailAddress"
+        android:paddingTop="8dp"
         android:textAlignment="center"
         android:textColor="@color/gray"
+        android:textColorHighlight="#000000"
+        android:textColorLink="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,19 +106,45 @@
         android:id="@+id/password"
         android:layout_width="271dp"
         android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/button"
+        android:layout_marginTop="2dp"
+        android:background="#FFFFFF"
         android:ems="10"
         android:gravity="center_horizontal"
         android:hint="Password"
         android:inputType="textPassword"
+        android:paddingTop="8dp"
         android:textAlignment="center"
         android:textColor="@color/gray"
+        android:textColorHighlight="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/travellinked"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:text="Travellinked"
+        android:textColor="#363C3E"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="213dp"
+        android:layout_height="149dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lgo4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

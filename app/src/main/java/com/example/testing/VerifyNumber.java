@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class VerifyNumber extends SignUp {
     FirebaseAuth mAuth;
     String manualVerify;
     TextView resendCode;
+    ImageView prevPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class VerifyNumber extends SignUp {
         mAuth = FirebaseAuth.getInstance();
         verificationTextField = findViewById(R.id.Input_Verification_Number);
         resendCode = findViewById(R.id.Resend_Code);
+        prevPage = findViewById(R.id.back_arrow);
 
         String noHp = getIntent().getStringExtra("noHp");
         ToastMaker(noHp);
@@ -56,7 +59,6 @@ public class VerifyNumber extends SignUp {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String verCode = verificationTextField.getText().toString().trim();
-                ToastMaker("onTextChanged");
                 if(verCode.length() == 6){
                     verifyButton.setEnabled(true);
                 }
@@ -82,11 +84,18 @@ public class VerifyNumber extends SignUp {
                 sendCode(manualVerify);
             }
         });
+
+        prevPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent prevPageIntent = new Intent(VerifyNumber.this,SignUp.class);
+                startActivity(prevPageIntent);
+            }
+        });
     }
 
 
     private void sendCode(String number){
-        ToastMaker("sendCode");
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 number,
                 60,
@@ -97,15 +106,12 @@ public class VerifyNumber extends SignUp {
                     public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                         super.onCodeSent(s, forceResendingToken);
                         verficationCode = s;
-
-                        ToastMaker("onCodeSent");
                     }
 
                     @Override
                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                         String code = phoneAuthCredential.getSmsCode();
                         manualVerify = code;
-                        ToastMaker("onVerificationCompleted");
                         if(code!=null){
                             verifyCode(code);
                         }
@@ -132,7 +138,6 @@ public class VerifyNumber extends SignUp {
                 if(task.isSuccessful()){
                     Intent intentLandingPage = new Intent(VerifyNumber.this,LandingPage.class);
                     intentLandingPage.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    ToastMaker("signn");
                     startActivity(intentLandingPage);
                 }
             }
