@@ -7,19 +7,23 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class SignUp extends MainActivity {
 
     ImageButton backToStart;
-    TextView noHp;
-    TextView firstName;
-    TextView lastName;
-    TextView email;
-    TextView password;
+    EditText noHp;
+    EditText firstName;
+    EditText lastName;
+    EditText email;
+    EditText password;
     Button nextPage;
     String nomorHpPindah;
     ImageView prevPage;
@@ -66,15 +70,19 @@ public class SignUp extends MainActivity {
         nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(firstName.toString().matches("") || lastName.toString().matches("") ||
-                    noHp.toString().matches("") || password.toString().matches("")|| email.toString().matches("")){
+                if(firstName.getText().toString().matches("") || lastName.getText().toString().matches("") ||
+                    noHp.getText().toString().matches("") || password.getText().toString().matches("")|| email.getText().toString().matches("")){
                     Toast.makeText(SignUp.this, "Please fill all the field", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Intent nextPageIntent = new Intent(SignUp.this,VerifyNumber.class);
                 nextPageIntent.putExtra("noHp",nomorHpPindah);
+                nextPageIntent.putExtra("Fname", firstName.getText().toString().trim());
+                nextPageIntent.putExtra("Lname", lastName.getText().toString().trim());
+                nextPageIntent.putExtra("pass",password.getText().toString().trim());
+                nextPageIntent.putExtra("email",email.getText().toString().trim());
 
-                //startActivity(nextPageIntent);
+                startActivity(nextPageIntent);
             }
         });
 

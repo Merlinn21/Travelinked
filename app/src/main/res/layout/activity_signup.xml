@@ -49,6 +49,7 @@
         android:textAlignment="center"
         android:textColor="@color/gray"
         android:textColorHighlight="#000000"
+        android:textColorLink="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
@@ -68,6 +69,7 @@
         android:textAlignment="center"
         android:textColor="@color/gray"
         android:textColorHighlight="#000000"
+        android:textColorLink="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/First_Name" />
@@ -87,6 +89,7 @@
         android:textAlignment="center"
         android:textColor="@color/gray"
         android:textColorHighlight="#000000"
+        android:textColorLink="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
@@ -104,7 +107,9 @@
         android:paddingTop="8dp"
         android:text=""
         android:textAlignment="center"
-        android:textColorLink="#000000"
+        android:textColor="@color/gray"
+        android:textColorHighlight="@color/gray"
+        android:textColorLink="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Last_Name" />
@@ -122,6 +127,7 @@
         android:paddingTop="8dp"
         android:textAlignment="center"
         android:textColor="@color/gray"
+        android:textColorHighlight="@color/gray"
         android:textColorLink="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

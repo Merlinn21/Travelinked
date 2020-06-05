@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,13 +28,14 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class MainActivity extends AppCompatActivity {
 
+    Intent nextPageIntent;
     private TextView signUpPhone;
     private Button googleLoginButton;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
     private Button loginBtn;
-    private TextView email;
-    private TextView password;
+    private EditText email;
+    private EditText password;
 
 
     @Override
@@ -72,11 +74,11 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(email.toString().trim().equals("") || password.toString().trim().equals("")){
-                    Toast.makeText(MainActivity.this, "Please fill all the", Toast.LENGTH_SHORT).show();
+                if(email.getText().toString().trim().length() == 0 || password.getText().toString().trim().length() == 0){
+                    Toast.makeText(MainActivity.this, "Please fill all the field", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                signInUser(email.getText().toString(),password.getText().toString());
 
             }
         });
@@ -86,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+
         if(currentUser!= null){
-            Intent nextPageIntent = new Intent(MainActivity.this,LandingPage.class);
+            nextPageIntent = new Intent(MainActivity.this,LandingPage.class);
             startActivity(nextPageIntent);
         }
     }
@@ -125,12 +128,29 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     FirebaseUser user = mAuth.getCurrentUser();
+                    nextPageIntent = new Intent(MainActivity.this,LandingPage.class);
+                    startActivity(nextPageIntent);
                 }
 
             }
         });
     }
 
+    private void signInUser(String email, String pass){
+        mAuth.signInWithEmailAndPassword(email,pass)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            nextPageIntent = new Intent(MainActivity.this,LandingPage.class);
+                            startActivity(nextPageIntent);
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this, "Wrong email or password",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
 }
 
 //references

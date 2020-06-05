@@ -19,8 +19,12 @@ import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,9 +34,18 @@ public class VerifyNumber extends SignUp {
     Button verifyButton;
     TextView verificationTextField;
     FirebaseAuth mAuth;
+    FirebaseUser firebaseUser;
     String manualVerify;
     TextView resendCode;
     ImageView prevPage;
+
+    DatabaseReference reff;
+    User user;
+    String noHp;
+    String fName;
+    String LName;
+    String email;
+    String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +58,15 @@ public class VerifyNumber extends SignUp {
         resendCode = findViewById(R.id.Resend_Code);
         prevPage = findViewById(R.id.back_arrow);
 
-        String noHp = getIntent().getStringExtra("noHp");
-        ToastMaker(noHp);
+        user = new User();
+        reff = FirebaseDatabase.getInstance().getReference().child("User");
+
+        noHp = getIntent().getStringExtra("noHp");
+        fName = getIntent().getStringExtra("Fname");
+        LName = getIntent().getStringExtra("Lname");
+        email = getIntent().getStringExtra("email");
+        password = getIntent().getStringExtra("pass");
+        ToastMaker(email);
         sendCode(noHp);
 
 
@@ -136,8 +156,24 @@ public class VerifyNumber extends SignUp {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+                    user.setFirst_name(fName);
+                    user.setLast_name(LName);
+                    user.setEmail(email);
+                    user.setGuide(false);
+                    user.setNoHp(noHp);
+
+                    reff.push().setValue(user);
+
+                    UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder().
+                            setDisplayName(fName).build();
+                    firebaseUser.updateProfile(profileUpdate);
+
+                    firebaseUser.updateEmail(email);
+                    firebaseUser.updatePassword(password);
+
                     Intent intentLandingPage = new Intent(VerifyNumber.this,LandingPage.class);
-                    intentLandingPage.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intentLandingPage);
                 }
             }
@@ -146,6 +182,21 @@ public class VerifyNumber extends SignUp {
 
     private void ToastMaker(String text){
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+    private void createAcc(String email, String pass){
+        mAuth.createUserWithEmailAndPassword(email, pass)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            FirebaseUser user = mAuth.getCurrentUser();
+                        }
+                        else{
+                            ToastMaker("Failed to create account");
+                        }
+                    }
+                });
     }
 
 }
