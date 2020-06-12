@@ -28,16 +28,23 @@ public class LandingPage extends AppCompatActivity {
         pack = findViewById(R.id.textBag);
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
-        bali = findViewById(R.id.imageBali);
+//        bali = findViewById(R.id.imageBali);
+//
+//        bali.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openGuidePage();
+//            }
+//        });
 
-        bali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LandingPage.this,guidePage.class));
-            }
-        });
+
 
     }
+
+//    public void openGuidePage() {
+//        Intent intent = new Intent(this, guidePage.class);
+//        startActivity(intent);
+//    }
     private void ToastMaker(String text){
         Toast.makeText(this,text, Toast.LENGTH_SHORT).show();
     }
