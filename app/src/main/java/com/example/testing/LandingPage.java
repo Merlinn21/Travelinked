@@ -42,13 +42,10 @@ public class LandingPage extends AppCompatActivity {
                 openGuidePage();
             }
         });
-
-
-
     }
 
     public void openGuidePage() {
-        Intent intent = new Intent(this, LandingPage.class);
+        Intent intent = new Intent(this, guideProfile2.class);
         startActivity(intent);
     }
     private void ToastMaker(String text){
