@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Choreographer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +27,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+
 public class MainActivity extends AppCompatActivity {
 
     Intent nextPageIntent;
@@ -43,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        reduceChoreographerSkippedFramesWarningThreshold();
         signUpPhone = findViewById(R.id.Sign_Up_Menu);
         googleLoginButton = findViewById(R.id.sign_in_button_google);
         loginBtn = findViewById(R.id.login_button);
@@ -127,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    FirebaseUser user = mAuth.getCurrentUser();
                     nextPageIntent = new Intent(MainActivity.this,LandingPage.class);
                     startActivity(nextPageIntent);
                 }
@@ -150,6 +154,19 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void reduceChoreographerSkippedFramesWarningThreshold() {
+        if (BuildConfig.DEBUG) {
+            Field field = null;
+            try {
+                field = Choreographer.class.getDeclaredField("SKIPPED_FRAME_WARNING_LIMIT");
+                field.setAccessible(true);
+                field.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+                field.set(null, 5);
+            } catch (Throwable e) {
+            }
+        }
     }
 }
 
