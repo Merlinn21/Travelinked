@@ -60,6 +60,7 @@
         android:id="@+id/imageBali"
         android:layout_width="135dp"
         android:layout_height="135dp"
+        android:clickable="true"
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

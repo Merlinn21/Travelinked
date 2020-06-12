@@ -194,7 +194,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginLeft="20sp"
-      android:text="xxaeadasdas (as about )"
+      android:text="About :"
       android:textColor="#6B797E"
       android:textSize="20sp"
       app:layout_constraintBottom_toBottomOf="parent"
