@@ -177,13 +177,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-      <TextView
-          android:id="@+id/aboutmetext"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Saya adalah seorang mahasiswa di salah satu universitas ternama di Indonesia. Berawal dari sebuah hobi berpetualang sejak sekolah membuat saya memiliki pengalaman yang bisa dibilang bagus untuk saat ini, namun seiring berjalannya waktu saya berfikir bagaimana kalau hobi saya ini dapat memberikan saya penghasilan. Akhirnyapun saya memutuskan bergabung bersama TRAVELINKED sebagai seorang guide"
-          android:textColor="#000000"
-          android:textSize="17sp" />
+        <TextView
+            android:id="@+id/aboutmetext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text='"Saya adalah seorang mahasiswa di salah satu universitas ternama di Indonesia. Berawal dari sebuah hobi berpetualang sejak sekolah membuat saya memiliki pengalaman yang bisa dibilang bagus untuk saat ini, namun seiring berjalannya waktu saya berfikir bagaimana kalau hobi saya ini dapat memberikan saya penghasilan. Akhirnyapun saya memutuskan bergabung bersama TRAVELINKED sebagai seorang guide"'
+            android:textColor="#000000"
+            android:textSize="17sp" />
 
     </LinearLayout>
   </ScrollView>

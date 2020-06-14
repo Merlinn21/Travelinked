@@ -1,5 +1,6 @@
 package com.example.testing;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,6 +16,11 @@ import android.widget.Toast;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.core.Tag;
 
 import java.lang.reflect.Field;
@@ -22,9 +28,9 @@ import java.lang.reflect.Modifier;
 
 public class LandingPage extends AppCompatActivity {
     TextView pack;
-    FirebaseUser user;
     FirebaseAuth mAuth;
     ImageView bali;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +38,23 @@ public class LandingPage extends AppCompatActivity {
         setContentView(R.layout.activity_landing_page);
         reduceChoreographerSkippedFramesWarningThreshold();
         pack = findViewById(R.id.textBag);
-        mAuth = FirebaseAuth.getInstance();
-        user = mAuth.getCurrentUser();
         bali = findViewById(R.id.imageBali);
+
+
+        DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child("Destination").child("Bali").child("Guide");
+
+        reff.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String test = dataSnapshot.child("FirstName").getValue().toString();
+                ToastMaker(test);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         bali.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +65,7 @@ public class LandingPage extends AppCompatActivity {
     }
 
     public void openGuidePage() {
-        Intent intent = new Intent(this, guideProfile2.class);
+        Intent intent = new Intent(this, GuideList.class);
         startActivity(intent);
     }
     private void ToastMaker(String text){

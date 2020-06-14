@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private Button loginBtn;
     private EditText email;
     private EditText password;
+    private User user;
 
 
     @Override
@@ -47,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        reduceChoreographerSkippedFramesWarningThreshold();
         signUpPhone = findViewById(R.id.Sign_Up_Menu);
         googleLoginButton = findViewById(R.id.sign_in_button_google);
         loginBtn = findViewById(R.id.login_button);
@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void FireBaseGooogleAuth(GoogleSignInAccount acc){
         AuthCredential authCredential = GoogleAuthProvider.getCredential(acc.getIdToken(),null);
+        FirebaseUser currentUser = mAuth.getCurrentUser();
         mAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -154,19 +155,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-    }
-
-    private void reduceChoreographerSkippedFramesWarningThreshold() {
-        if (BuildConfig.DEBUG) {
-            Field field = null;
-            try {
-                field = Choreographer.class.getDeclaredField("SKIPPED_FRAME_WARNING_LIMIT");
-                field.setAccessible(true);
-                field.setInt(field, field.getModifiers() & ~Modifier.FINAL);
-                field.set(null, 5);
-            } catch (Throwable e) {
-            }
-        }
     }
 }
 
