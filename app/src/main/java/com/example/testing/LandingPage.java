@@ -29,7 +29,7 @@ import java.lang.reflect.Modifier;
 public class LandingPage extends AppCompatActivity {
     TextView pack;
     FirebaseAuth mAuth;
-    ImageView bali;
+    ImageView bali, yogya;
 
 
     @Override
@@ -38,35 +38,27 @@ public class LandingPage extends AppCompatActivity {
         setContentView(R.layout.activity_landing_page);
         pack = findViewById(R.id.textBag);
         bali = findViewById(R.id.imageBali);
-
-
-        DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child("Destination").child("Bali").child("Guide");
-
-        reff.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String test = dataSnapshot.child("FirstName").getValue().toString();
-                ToastMaker(test);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        yogya = findViewById(R.id.imageYogya);
 
         bali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openGuidePage();
+                Intent intent = new Intent(LandingPage.this, GuideList.class);
+                intent.putExtra("Location","Bali");
+                startActivity(intent);
+            }
+        });
+
+        yogya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LandingPage.this, GuideList.class);
+                intent.putExtra("Location","Yogyakarta");
+                startActivity(intent);
             }
         });
     }
 
-    public void openGuidePage() {
-        Intent intent = new Intent(this, GuideList.class);
-        startActivity(intent);
-    }
     private void ToastMaker(String text){
         Toast.makeText(LandingPage.this,text, Toast.LENGTH_SHORT).show();
     }

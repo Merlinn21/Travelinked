@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background3"
-    tools:context=".dealActivity">
+    >
 
     <TextView
         android:id="@+id/textView"
@@ -31,7 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.132"
-        app:srcCompat="@drawable/bali" />
+        app:srcCompat="@drawable/bali2" />
 
     <EditText
         android:id="@+id/enddate"
@@ -146,10 +146,10 @@
         app:srcCompat="@drawable/whitepage" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/guideName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mochamad Rizki"
+        android:text="guideName"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -159,10 +159,10 @@
         app:layout_constraintVertical_bias="0.703" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rp.200.000/day for each person"
+        android:text="Rp.0/day for each person"
         android:textColor="#000000"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"

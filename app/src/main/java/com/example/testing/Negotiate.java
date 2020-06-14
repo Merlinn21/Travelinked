@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 public class Negotiate extends AppCompatActivity {
+    TextView originalPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +18,10 @@ public class Negotiate extends AppCompatActivity {
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
+        originalPrice = findViewById(R.id.beforePrice);
+
+        String price = getIntent().getStringExtra("price");
+        originalPrice.setText("Price before negotiation is Rp." + price);
 
         int width = dm.widthPixels;
         int height = dm.heightPixels;

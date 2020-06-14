@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,10 +31,12 @@ public class GuideList extends AppCompatActivity {
         guideList = findViewById(R.id.listGuide);
 
         final ArrayList<String> list = new ArrayList<>();
+        final ArrayList<String> guideArray = new ArrayList<>();
         final ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_guide,list);
         guideList.setAdapter(adapter);
+        final String location = getIntent().getStringExtra("Location");
 
-        DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child("Destination").child("Bali");
+        DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child("Destination").child(location);
 
         reff.addValueEventListener(new ValueEventListener() {
             @Override
@@ -42,6 +45,7 @@ public class GuideList extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     String Fname = snapshot.child("FirstName").getValue().toString();
                     String Lname = snapshot.child("LastName").getValue().toString();
+                    guideArray.add(snapshot.getKey());
                     list.add(Fname + " " + Lname);
                 }
                 adapter.notifyDataSetChanged();
@@ -57,8 +61,13 @@ public class GuideList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(GuideList.this, guideProfile2.class);
+                intent.putExtra("guideId",guideArray.get(position));
+                intent.putExtra("Location",location);
                 startActivity(intent);
             }
         });
+    }
+    private void ToastMaker(String text){
+        Toast.makeText(GuideList.this,text, Toast.LENGTH_SHORT).show();
     }
 }

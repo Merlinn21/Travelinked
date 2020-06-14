@@ -87,7 +87,7 @@
         app:layout_constraintVertical_bias="0.716" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/guideName"
         android:layout_width="100dp"
         android:layout_height="20dp"
         android:text="Overall Ratings"
@@ -111,7 +111,7 @@
         app:srcCompat="@android:drawable/checkbox_on_background" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Verified"

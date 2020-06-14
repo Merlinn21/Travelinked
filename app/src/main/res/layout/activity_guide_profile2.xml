@@ -181,7 +181,7 @@
                 android:id="@+id/aboutmetext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Saya adalah seorang mahasiswa di salah satu universitas ternama di Indonesia. Berawal dari sebuah hobi berpetualang sejak sekolah membuat saya memiliki pengalaman yang bisa dibilang bagus untuk saat ini, namun seiring berjalannya waktu saya berfikir bagaimana kalau hobi saya ini dapat memberikan saya penghasilan. Akhirnyapun saya memutuskan bergabung bersama TRAVELINKED sebagai seorang guide"
+                android:text="About Me"
                 android:textColor="#000000"
                 android:textSize="17sp" />
 
@@ -213,13 +213,13 @@
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.06"
-        app:srcCompat="@drawable/rizkiprofile" />
+        app:srcCompat="@drawable/icon_guidehistory" />
 
     <TextView
         android:id="@+id/guideName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mochamad Rizki"
+        android:text="Guide Name"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -233,7 +233,7 @@
         android:id="@+id/guidePrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rp.250.000,00/hari"
+        android:text="Rp.0,00/hari"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
