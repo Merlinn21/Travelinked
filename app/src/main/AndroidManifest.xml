@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GuideList"></activity>
+        <activity android:name=".Deal"></activity>
+        <activity android:name=".Negotiate" />
+        <activity android:name=".GuideList" />
         <activity android:name=".guideProfile2" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -36,7 +36,6 @@ public class LandingPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
-        reduceChoreographerSkippedFramesWarningThreshold();
         pack = findViewById(R.id.textBag);
         bali = findViewById(R.id.imageBali);
 
@@ -72,16 +71,5 @@ public class LandingPage extends AppCompatActivity {
         Toast.makeText(LandingPage.this,text, Toast.LENGTH_SHORT).show();
     }
 
-    private void reduceChoreographerSkippedFramesWarningThreshold() {
-        if (BuildConfig.DEBUG) {
-            Field field = null;
-            try {
-                field = Choreographer.class.getDeclaredField("SKIPPED_FRAME_WARNING_LIMIT");
-                field.setAccessible(true);
-                field.setInt(field, field.getModifiers() & ~Modifier.FINAL);
-                field.set(null, 5);
-            } catch (Throwable e) {
-            }
-        }
-    }
+
 }

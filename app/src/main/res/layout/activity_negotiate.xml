@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".negotiateActivity"
-    android:background="@drawable/popup_background">
+    android:background="@drawable/bali"
+    >
 
     <TextView
         android:id="@+id/textView2"
