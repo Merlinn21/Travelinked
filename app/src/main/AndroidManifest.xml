@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Deal"></activity>
-        <activity android:name=".Negotiate" />
+        <activity android:name=".Negotiate"
+            android:theme="@style/AppTheme.Popup"/>
         <activity android:name=".GuideList" />
         <activity android:name=".guideProfile2" />
         <activity android:name=".MainActivity">

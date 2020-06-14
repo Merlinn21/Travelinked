@@ -4,54 +4,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        app:layout_constraintEnd_toStartOf="@+id/search_bar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </SearchView>
-
-    <EditText
-        android:id="@+id/search_bar"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/search"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
 
     <TextView
         android:id="@+id/textBag"
         android:layout_width="209dp"
         android:layout_height="26dp"
+        android:layout_marginTop="16dp"
         android:text="@string/pack_your_bag"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_bar" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageRajaampat"
-        android:layout_width="419dp"
-        android:layout_height="228dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="458dp"
+        android:layout_height="235dp"
+        android:layout_marginTop="28dp"
         android:contentDescription="@string/todo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textBag"
         app:srcCompat="@drawable/rajaampat" />
@@ -74,13 +50,14 @@
         android:id="@+id/imageYogya"
         android:layout_width="135dp"
         android:layout_height="135dp"
-        android:layout_marginTop="68dp"
         android:clickable="true"
         android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.887"
+        app:layout_constraintHorizontal_bias="0.884"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageRajaampat"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.736"
         app:srcCompat="@drawable/yogya" />
 
     <TextView
@@ -125,5 +102,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageRajaampat" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
